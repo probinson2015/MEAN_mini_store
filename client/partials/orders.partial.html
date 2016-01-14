@@ -1,0 +1,52 @@
+<!-- <h1>Orders</h1> -->
+
+
+
+<!-- {{ordersCtrl.users[0]}} -->
+<!-- {{ordersCtrl.users}} -->
+
+<!-- add new order -->
+<br>
+<form>
+Customer: <select name ="newOrder.first_name" ng-model="newOrder.user_id">
+	<option value ='{{user._id}}'ng-repeat="user in ordersCtrl.users">
+		{{user.first_name}}
+	</option>
+	</select>
+Product: <select name ="newOrder.product_name" ng-model="newOrder.product_id">
+		<option value = '{{product._id}}' ng-repeat="product in ordersCtrl.products">{{product.product_name}}
+		</option>
+	</select>
+
+	<input type="number" placeholder="quantity" ng-model="newOrder.quantity">
+	<button class="btn btn-success" role="button" ng-click="ordersCtrl.add(newOrder)" type="submit">Order</button>
+</form><br>
+<!-- end of add new order -->
+
+
+
+<!-- show all orders -->
+
+<!-- {{ordersCtrl.orders}} -->
+<p class="pull-left">Filter Orders: <input type="text" ng-model="ordersCtrl.orders.order_filter" placeholder="filter..."></p><br>
+<table class = "table">
+
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="order in ordersCtrl.orders | filter:ordersCtrl.orders.order_filter">
+        <td><span ng-bind="order._user_id.first_name"></span></td>
+        <td><span ng-bind="order._product_id.product_name"></span></td>
+        <td><span ng-bind="order.quantity"></span></td>
+        <td><span ng-bind="order.created_at | date: 'MMMM d yyyy'"></span></td>
+        <td><button class="btn btn-danger" role="button"ng-click="ordersCtrl.remove(order)">Cancel Order</button></td>
+        </tr>
+    </tbody>
+</table>
+<!-- end of show all orders -->

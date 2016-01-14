@@ -1,0 +1,34 @@
+<div class="col-md-4">
+<h4>Add a new Product</h4>
+	<p> Name:</p>
+	<p> <input placeholder ="name..."ng-model="productsCtrl.newProduct.product_name" require></p>
+	<p> Image (url): </p>
+	<p> <input placeholder ="http://"ng-model="productsCtrl.newProduct.img_url" require></p>
+	<p> Description: </p> 
+	<p> <textarea ng-model="productsCtrl.newProduct.description" require></textarea></p>
+	<p> Initial Quantity: </p>
+	<p> <input type = "number" ng-model="productsCtrl.newProduct.quantity" require></p>
+	<button class="btn btn-success" role="button" ng-click="productsCtrl.add(productsCtrl.newProduct)">Add Product</button>
+</div>
+
+<!-- <div class="col-md-8">
+	<li ng-repeat="product in productsCtrl.products">
+		<a><span ng-bind="product.product_name" ng-click="productsCtrl.show(product)"></span></a>
+		<button class="btn btn-primary" role="button" ng-click="productsCtrl.remove(product)">Remove Product</button>
+	</li>
+</div> -->
+
+<div class="row">
+  <div ng-repeat="product in productsCtrl.products" class="col-sm-3">
+    <div class="thumbnail">
+      <img style="height: 120px; width: 120px" ng-src="{{product.img_url}}" alt="Product Image">
+      <div class="caption">
+        <h3 ng-bind="product.product_name"></h3>
+        <p ng-bind = "product.description"></p>
+        <p>Quantity Remaining: <span ng-bind="product.quantity"></span></p>
+        <button ng-click="productsCtrl.show(product)"class="btn btn-info" role="button">Edit</button>
+        <button class="btn btn-danger" role="button" ng-click="productsCtrl.remove(product)">Remove Product</button>
+      </div>
+    </div>
+  </div>
+</div>

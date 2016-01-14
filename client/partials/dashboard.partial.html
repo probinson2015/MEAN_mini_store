@@ -1,0 +1,58 @@
+<br>
+<div class="col-md-2">
+	<p class="pull-right"><input type="text" ng-model="ordersCtrl.filter" placeholder="search..." class="pull-right"></p>
+</div>
+
+<div class="col-md-8">
+	<h3> Products </h3>
+	<div class="row">
+	  <div ng-repeat="product in ordersCtrl.products| filter:ordersCtrl.filter | limitTo:3" class="col-sm-3">
+	    <div class="thumbnail">
+	      <img style="height: 120px; width: 120px" ng-src="{{product.img_url}}" alt="Product Image">
+	      <div class="caption">
+	        <h5 ng-bind="product.product_name"></h5>
+	         <p>(<span ng-bind="product.quantity"></span> left )</p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<a href="#/products"> show more... </a>
+
+	<h3> Recent Orders </h3>
+	<table class = "table">
+	    <thead>
+	        <tr>
+	            <th>Customer Name</th>
+	            <th>Product</th>
+	            <th>Quantity</th>
+	            <th>Order Date</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr ng-repeat="order in ordersCtrl.orders | filter:ordersCtrl.filter| limitTo:3">
+		        <td><span ng-bind="order._user_id.first_name"></span></td>
+		        <td><span ng-bind="order._product_id.product_name"></span></td>
+		        <td><span ng-bind="order.quantity"></span></td>
+		        <td><span ng-bind="order.created_at | date: 'MMMM d yyyy'"></span></td>
+	        </tr>
+	    </tbody>
+	</table>
+	<a href="#/orders"> show all orders... </a>
+
+	<h3> New Customers </h3>
+	<table class = "table">
+	    <thead>
+	        <tr>
+	            <th>Customer Name</th>
+	            <th>Date Joined</th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr ng-repeat="user in ordersCtrl.users | filter:ordersCtrl.filter">
+	        <td><span ng-bind="user.first_name"></span></td>
+	        <td><span ng-bind="user.created_at | date: 'MMMM d yyyy'"></span></td>
+	        </tr>
+	    </tbody>
+	</table>
+	<a href="#/users"> show all customers </a>
+</div>

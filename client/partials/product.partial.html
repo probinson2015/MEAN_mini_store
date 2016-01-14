@@ -1,0 +1,7 @@
+<h3>Edit Product</h3>
+<p><label>Product Name: </label> <input ng-model="productCtrl.product.product_name"></p>
+<p><label>Product Description: </label> </p> <textarea ng-model="productCtrl.product.description"></textarea>
+<p><label>Product Quantity: </label> <input ng-model="productCtrl.product.quantity"></p>
+<p><label>Product Image: </label> <input placeholder="http://" ng-model="productCtrl.product.img_url"></p>
+
+<button ng-click="productCtrl.update(productCtrl.product)">Update</button>
